@@ -76,32 +76,40 @@ A state-of-the-art analytics platform examining US border crossing patterns with
 
 ```
 Border_Crossing_Entry_Data_Analysis/
-├── 📊 Core Analysis
+├── 📊 data/                                    # Data Files
 │   ├── Border_Crossing_Entry_Data.csv          # Raw dataset (400K+ records)
-│   ├── border_crossing_analysis.ipynb          # Original comprehensive analysis
 │   └── border_crossing_clean.csv               # Processed dataset
-├── 🤖 Advanced ML Modules
-│   ├── advanced_ml_analysis.py                 # Clustering & Classification
-│   ├── predictive_analytics.py                 # Multi-model Forecasting  
-│   └── anomaly_detection_system.py             # Ensemble Anomaly Detection
-├── 📱 Interactive Systems
-│   ├── interactive_dashboard.py                # Real-time Dashboard (Dash)
-│   ├── portfolio_website.py                    # Portfolio Showcase (Streamlit)
+├── 📂 src/                                     # Source Code
+│   ├── analysis/                               # Core Analysis
+│   │   └── border_crossing_analysis.ipynb      # Original comprehensive analysis
+│   ├── ml/                                     # Machine Learning Modules
+│   │   ├── advanced_ml_analysis.py             # Clustering & Classification
+│   │   ├── predictive_analytics.py             # Multi-model Forecasting  
+│   │   └── anomaly_detection_system.py         # Ensemble Anomaly Detection
+│   ├── dashboards/                             # Interactive Systems
+│   │   ├── interactive_dashboard.py            # Real-time Dashboard (Dash)
+│   │   └── portfolio_website.py               # Portfolio Showcase (Streamlit)
+│   ├── visualization/                          # Visualization Scripts
+│   │   ├── generate_visualizations.py          # Chart Generation Scripts
+│   │   └── forecast_visualization.py           # Time Series Plots
 │   └── automated_report_generator.py           # Professional Report System
-├── 📊 Visualization & Analysis
-│   ├── generate_visualizations.py              # Chart Generation Scripts
-│   ├── forecast_visualization.py               # Time Series Plots
-│   └── results/                                # Generated Outputs
-│       ├── visualizations/                     # Static Charts (PNG)
-│       └── time_series_forecast_analysis.png   # Forecast Results
-├── 📋 Documentation & Reports
-│   ├── README.md                               # This File (Enhanced)
+├── 📊 results/                                 # Generated Outputs
+│   ├── visualizations/                         # Static Charts (PNG)
+│   │   ├── 01_border_comparison.png
+│   │   ├── 02_transportation_modes.png
+│   │   ├── 03_temporal_analysis.png
+│   │   ├── 04_geographic_analysis.png
+│   │   └── 05_traffic_categories.png
+│   └── time_series_forecast_analysis.png       # Forecast Results
+├── 📋 docs/                                    # Documentation & Reports
 │   ├── project_overview.md                     # Detailed Project Guide
 │   ├── analysis_summary.md                     # Key Findings Summary
 │   └── forecast_results.md                     # Forecasting Documentation
-└── 🛠️ Configuration
-    ├── requirements.txt                         # All Dependencies
-    └── Dockerfile                              # Container Configuration
+├── 🛠️ Configuration
+│   ├── README.md                               # This File (Enhanced)
+│   ├── requirements.txt                         # All Dependencies
+│   ├── Dockerfile                              # Container Configuration
+│   └── .gitignore                              # Git ignore patterns
 ```
 
 ## 🚀 Getting Started
@@ -127,20 +135,20 @@ Border_Crossing_Entry_Data_Analysis/
 3. **Launch interactive systems**:
    ```bash
    # Real-time Dashboard
-   python interactive_dashboard.py
+   python src/dashboards/interactive_dashboard.py
    
    # Portfolio Website  
-   streamlit run portfolio_website.py
+   streamlit run src/dashboards/portfolio_website.py
    
    # Run ML Analysis
-   python advanced_ml_analysis.py
+   python src/ml/advanced_ml_analysis.py
    ```
 
 ### 🎯 Feature Demonstrations
 
 #### **Interactive Dashboard** (Port 8050)
 ```bash
-python interactive_dashboard.py
+python src/dashboards/interactive_dashboard.py
 # Access: http://localhost:8050
 ```
 - Real-time filtering across multiple dimensions
@@ -150,19 +158,19 @@ python interactive_dashboard.py
 #### **ML Analysis Suite**
 ```bash
 # Advanced Pattern Detection
-python advanced_ml_analysis.py
+python src/ml/advanced_ml_analysis.py
 
 # Predictive Forecasting
-python predictive_analytics.py
+python src/ml/predictive_analytics.py
 
 # Anomaly Detection
-python anomaly_detection_system.py
+python src/ml/anomaly_detection_system.py
 ```
 
 #### **Automated Reporting**
 ```bash
 # Generate Professional Reports
-python automated_report_generator.py
+python src/automated_report_generator.py
 
 # Creates: executive_summary_*.html, detailed_analysis_*.html
 ```
@@ -170,7 +178,7 @@ python automated_report_generator.py
 #### **Portfolio Showcase**
 ```bash
 # Professional Portfolio Website
-streamlit run portfolio_website.py
+streamlit run src/dashboards/portfolio_website.py
 # Access: http://localhost:8501
 ```
 
@@ -313,7 +321,7 @@ docker run -p 8050:8050 -p 8501:8501 border-analytics:latest
 ### **API Integration**
 ```python
 # Example API usage
-from predictive_analytics import PredictiveAnalytics
+from src.ml.predictive_analytics import PredictiveAnalytics
 
 predictor = PredictiveAnalytics()
 forecast = predictor.generate_forecasts_with_confidence(
